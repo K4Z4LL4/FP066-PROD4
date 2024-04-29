@@ -1,0 +1,355 @@
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+    background: linear-gradient(#f8f6ee, 95%, #FFCE32);
+}
+
+h1, h2, h3 {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+h3 {
+    color: #f8f6ee;
+}
+
+#logo {
+    color: #323232;
+    font-size: 60px;
+    font-family: "Rubik Gemstones", sans-serif;
+    margin-left: 24px;
+}
+
+#logo:hover {
+    color: #FFCE32;
+}
+
+/* +Tarea / +Panel */
+.lg-1 {
+    color: #FFCE32;
+    font-size: 60px;
+    font-family: "Rubik Gemstones", sans-serif;
+}
+
+.lg-2 {
+    color: #C5ADC5;
+    font-size: 60px;
+    font-family: "Rubik Gemstones", sans-serif;
+}
+.lg-2:hover {
+    color: #FFCE32;
+}
+
+/* Menu navegacion / footer */
+#simple-linear {
+    background: linear-gradient(#F0F0F0, 25%, #FFCE32);
+}
+
+/* Estilos del footer*/
+footer {
+    margin-top: auto;
+}
+
+/* Estilo para para las cards */
+.custom-card {
+    text-align: center;
+}
+
+.card {
+    position: relative;
+}
+
+.btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+}
+
+#panelsList {
+    margin-bottom: 500px;
+}
+
+/* Estilo para el botón de enviar en el formulario
+.modal-body button.btn-success {
+    background-color: #ef3054;
+    border: none;
+}
+
+.modal-body button.btn-primary:hover {
+    background-color: #F14161;
+}*/
+
+.container-tareas {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 200px; /* Ajusta la altura según sea necesario */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+
+}
+
+
+
+
+
+/* Estilos Pagina Detalle */
+
+.container-tareas-dg {
+    padding: 0px;
+}
+
+
+.container-tareas-dg p {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.container-tareas-dg h3 {
+    font-size: 28px;
+    font-weight: 200;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+}
+
+/*.custom-btn-dg {
+    width: 100%;
+    border: none;
+    padding: 12px;
+    background-color: transparent;
+}*/
+
+/* Contenedores drag & drop*/
+
+/* Ejemplo columna con hover y sombra
+#doings-column {
+    background-color: whitesmoke;
+    box-shadow: 20px 20px #ffcc3c;
+}
+#doings-column:hover {
+    background-color: red;
+    box-shadow: 20px 20px black;
+}
+
+box-shadow: 20px 20px ;
+box-shadow: 20px 20px #ccff00;
+box-shadow: 20px 20px black;
+    box-shadow: 20px 20px #51ca6e;
+    #575757
+    #707172
+*/
+
+#backlogs-column {
+    background-color: #323232;
+    border-radius: 5px;
+}
+#backlogs-column:hover {
+    background-color: #c9efe9;
+}
+
+#doings-column {
+    background-color: #323232;
+}
+#doings-column:hover {
+    background-color: #fb7e6c;
+}
+
+#tests-column {
+    background-color: #323232;
+}
+#tests-column:hover {
+    background-color: #e8e24a;
+}
+
+#dones-column {
+    background-color: #323232;
+}
+#dones-column:hover {
+    background-color: #97d15f;
+}
+
+.custom-card-dg {
+    padding: 12px;
+    margin: 10px;
+}
+
+.card-dragging {
+    opacity: 0.5; /* Hace que la tarjeta sea semi-transparente mientras se arrastra */
+    border: 2px dashed #333; /* Puede ayudar a visualizar el área de destino */
+}
+
+/*.custom-btn-card-dg {
+    border-radius: 3px;
+    color:#FFFFFF;
+    box-shadow: none;
+    border: none;
+    background-color: #ef3054;
+    font-size: 14px;
+    padding: 6px;
+    width: 50%;
+}
+
+.custom-btn-card-dg :hover {
+    background-color: #fff;
+}
+
+.custom-btn-card2-dg {
+    margin-top: 10px;
+    border-radius: 3px;
+    box-shadow: none;
+    border: none;
+    background-color: #464f69;
+    font-size: 14px;
+    padding: 4px;
+    width: 80%;
+}*/
+
+.parrafo {
+    background-color: #fff;
+    padding: 1rem;
+
+}
+/*  DRAGABBLE */
+.body-bg {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; /* Espacio entre las columnas */
+    padding-bottom: 50px;
+}
+
+.draggable-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.section {
+    background-color: #f8f6ee;
+    padding-top: 24px;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.draggable-container {
+    text-align: center;
+    font-weight: 200;
+    margin: auto; /* Esto centrará el contenedor horizontalmente */
+    max-width: 1600px; /* Ajusta el valor según tus necesidades */
+
+}
+
+/*Cards Primera página*/
+.card {
+    margin: 25px;
+    border: none;
+}
+
+.card-text {
+    font-size: 14px;
+    font-weight: 300;
+    border: none;
+}
+
+.panel-card {
+    min-width: 300px;
+    min-height: 90px;
+}
+
+.card-header {
+    background-color: #000;
+}
+
+.parrafo {
+    cursor: grab;
+    max-width: 400px;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+.bold {
+    font-weight: bold;
+}
+.dragover {
+    /*  Make it glow with light */
+    box-shadow: 0 0 50px 0 #ffcc3c;
+}
+
+/* Modales */
+
+.modal {
+    border-radius: 12px;
+}
+
+/*Revisar*/
+.modal-dialog {
+    border-radius: 12px;
+    border: none;
+    background-color: #C5ADC5;
+}
+
+/*Revisar*/
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    background-color: #C5ADC5;
+}
+
+.modal-header {
+    border-radius: 0px;
+    border: none;
+    background-color: #C5ADC5;
+    text-align: center;
+}
+
+.modal-title {
+    text-align: center;
+}
+
+.modal-body {
+    border-radius: 0px;
+    border: none;
+    background-color: #C5ADC5;
+}
+
+.modal-footer {
+    border-radius: 0px;
+    border: none;
+    background-color: #C5ADC5;
+}
+/* Estilos para los modales */
+
+.modal-header .btn-close {
+    margin-top: 30px; /* Ajusta el valor según tus preferencias */
+    margin-right: 30px; /* Ajusta el valor según tus preferencias */
+}
+
+/* Estilo para los campos del formulario dentro del modal */
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+    margin-bottom: 15px; /* Espaciado entre los campos del formulario */
+    background-color: #f8f6ee;
+    border: none;
+    border-radius: 3px;
+    color: #000;
+}
+
+/* Modificar estilos de los campos del formulario dentro del modal */
+.modal-body input:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+    border-color: #F14161; /* Cambiar el color del borde al hacer clic */
+    box-shadow: 0 0 5px rgba(239, 48, 84, 0.5); /* Agregar una sombra al hacer clic */
+    background-color: #ffcc3c;
+    color: #000000;
+}
+
+.panelList {
+    background-color: #000;
+}
