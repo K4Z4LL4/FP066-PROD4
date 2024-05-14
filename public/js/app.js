@@ -37,6 +37,7 @@ function broadcast(msg) {
     socket.emit('textit', {
         status: "ok", text: `<strong>${socket.id}</strong>:<br>${msg}`
     });
+
 }
 
 
@@ -513,15 +514,23 @@ function applyListeners() {
 }
 
 
-function initializeSocket() {
-    socket = io();
+async function initializeSocket() {
 
-    // Muestra los mensajes recibidos
-    socket.on('textit', (msg) => {
-        console.log("Recibido:", msg);
-        messageFlash(msg.text, "info");
+    // Basic WebSocket
+    socket = new WebSocket(
+        'ws://localhost:4000/subscriptions',
+        'graphql-transport-ws'
+    );
+
+
+    socket.addEventListener('message', handleSocketMessage);
+    socket.addEventListener('open', function (ev) {
+        // Lanza la primera petición de conexión al websocket
+        socket.send('{"type":"connection_init"}');
     });
 }
+
+
 
 /*
  *******************************UI********************************************

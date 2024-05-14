@@ -1,6 +1,6 @@
 //Express imports
 import express from 'express';
-import http from 'http';
+//import http from 'http';
 import cors from 'cors';
 //import bodyParser from 'body-parser';
 
@@ -8,12 +8,19 @@ import cors from 'cors';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import { createServer } from 'http';
+
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { WebSocketServer } from 'ws';
+import { useServer } from 'graphql-ws/lib/use/ws';
 
 //mongoose imports
 import 'dotenv/config';
 
+/*
 //Socket.io import
 import { Server } from 'socket.io';
+*/
 
 // Upload imports
 import fileUpload from 'express-fileupload';
@@ -22,24 +29,39 @@ import fileUpload from 'express-fileupload';
 import { connDB } from './config/config.js';
 import typeDefs from './db/schema.js';
 import resolvers from './db/resolvers.js';
-import socketHandler from './handlers/socket.js';
+//import socketHandler from './handlers/socket.js';
 import uploadHandler from './handlers/upload.js';
 
 //
 const PORT = process.env.PORT || 4000;
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
-const httpServer = http.createServer(app);
-const ioServer = new Server(httpServer);
+const httpServer = createServer(app);
+//const ioServer = new Server(httpServer);
+const wsServer = new WebSocketServer({
+    server: httpServer,
+    path: '/subscriptions',
+});
+
+const serverCleanup = useServer({ schema }, wsServer);
 
 // ApolloServer constructor
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    schema,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer }),
+        {
+            async serverWillStart() {
+                return {
+                    async drainServer() {
+                        await serverCleanup.dispose();
+                    },
+                };
+            },
+        },
+    ],
 });
 
-// More required logic for integrating with Express
-await server.start();
+
 
 // Routes
 app.use(
@@ -48,6 +70,8 @@ app.use(
 
 connDB();
 
+// More required logic for integrating with Express
+await server.start();
 // Middleware
 app.use('/app',
     cors(),
@@ -57,16 +81,22 @@ app.use('/app',
 
 app.use('/upload', fileUpload({ debug: true, uriDecodeFileNames: true }));
 
+/*
 // Socket.io
 ioServer.on('connection', socketHandler);
-
+*/
 // Upload endpoint
 app.post('/upload', uploadHandler);
 
+/*
 // Server startup
 await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
 console.log(`🚀 Server ready at http://localhost:${PORT}`);
-
+*/
+// Now that our HTTP server is fully set up, we can listen to it.
+httpServer.listen(PORT, () => {
+    console.log(`Server is now running on http://localhost:${PORT}`);
+});
 
 /*
 /////////DB en Sandbox GraphQL/////////////

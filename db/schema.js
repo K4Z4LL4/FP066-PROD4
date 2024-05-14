@@ -67,7 +67,11 @@ const typeDefs = `#graphql
             id: ID!, status: Int!): Task
         deleteTask(
             id: ID!): Task
-}
+    }
+    
+    type Subscription {
+    taskStatusChanged: Task
+  }
 `;
 export default typeDefs;
 
